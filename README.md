@@ -4,7 +4,7 @@
 
 **Works with both [Antigravity Standalone App](https://antigravity.google/)\* and [Antigravity IDE](https://antigravity.google/).**
 
-🌍 Languages: [English](README.md) | [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md)
+🌍 Languages: [English](README.md) | [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Português](README.pt-br.md)
 
 Control your Antigravity AI agent remotely via Telegram.
 Send messages, switch AI models, manage workspaces, take screenshots, and run multi-agent workflows — all from your phone.
