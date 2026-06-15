@@ -401,8 +401,8 @@ function launchIDE(workspace, port = 9333, app = getPreferredApp()) {
             switch (PLATFORM) {
                 case 'win32':
                     cmd = isRunning
-                        ? `start "" "${binary}" ${dataDirArg} ${wsArg}`
-                        : `start "" "${binary}" --remote-debugging-port=${port} ${dataDirArg} ${wsArg}`;
+                        ? `powershell -WindowStyle Hidden -Command "Start-Process -FilePath '${binary}' -ArgumentList '${dataDirArg}', '${wsArg}'"`
+                        : `powershell -WindowStyle Hidden -Command "Start-Process -FilePath '${binary}' -ArgumentList '--remote-debugging-port=${port}', '${dataDirArg}', '${wsArg}'"`;
                     break;
                 case 'darwin':
                     // Use the CLI script which handles IPC to correctly open new windows
