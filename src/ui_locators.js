@@ -127,12 +127,9 @@ const UI_LOCATORS_SCRIPT = `
             // Secondary strategy: find any button containing a square shape or 'stop' text
             const allBtns = Array.from(chatArea.querySelectorAll('button'));
             return allBtns.find(b => {
-                const svg = b.querySelector('svg');
-                const text = (b.textContent || '').toLowerCase();
-                return (svg && (svg.classList.contains('lucide-square') || b.innerHTML.includes('square'))) ||
-                       text.includes('stop') || 
-                       text.includes('cancel') || 
-                       text.includes('durdur');
+                if (b.querySelector('svg.lucide-square')) return true;
+                const t = (b.textContent || '').trim().toLowerCase();
+                return t === 'stop' || t === 'cancel' || t === 'durdur' || t === 'iptal';
             }) || null;
         },
 
@@ -232,7 +229,7 @@ const UI_LOCATORS_SCRIPT = `
          * @returns {HTMLElement[]}
          */
         getWorkspaceCards: () => {
-            return Array.from(document.querySelectorAll('div[data-workspace-card="true"], .workspace-card'));
+            return Array.from(document.querySelectorAll('div[data-project-card="true"], div[data-workspace-card="true"], .workspace-card'));
         },
 
         /**

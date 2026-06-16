@@ -112,7 +112,7 @@
   "workspace": {
     "switching": "🔄 Yeni workspace ile IDE penceresi açılıyor: {workspace}",
     "start_failed": "❌ Başlatılamadı: {error}",
-    "started": "✅ Yeni workspace ile IDE başlatıldı!",
+    "started": "✅ Yeni workspace ile IDE başlatıldı: {workspace}",
     "trusted": "🔓 Workspace otomatik olarak güvenilir olarak işaretlendi.",
     "cdp_warning": "\n⚠️ CDP bağlantısı henüz hazır olmayabilir. Birkaç saniye bekleyip tekrar deneyin.",
     "select_prompt": "Lütfen geçiş yapmak istediğiniz çalışma alanını seçin:",
@@ -340,7 +340,7 @@
     "changelog": "📝 <b>Changelog:</b> <i>{message}</i>\n\n",
     "update_note": "<i>💡 Not: Antigravity 2.0 (Standalone App) desteklenir, fakat Antigravity IDE önerilir.</i>\n\n",
     "updating": "Güncelleniyor...",
-    "auto_updating": "🔄 <b>[Otomatik Güncelleme]</b> Geliştirici güncellemesi algılandı (v{version} - {commit}).\\nDeğişiklikler birleştiriliyor ve güncelleniyor...",
+    "auto_updating": "🔄 <b>[Otomatik Güncelleme]</b> Geliştirici güncellemesi algılandı (v{version} - {commit}).\nDeğişiklikler birleştiriliyor ve güncelleniyor...",
     "auto_update_failed": "❌ <b>[Otomatik Güncelleme]</b> Güncelleme başarısız oldu: {error}"
   },
   "error": {

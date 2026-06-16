@@ -112,7 +112,7 @@
   "workspace": {
     "switching": "🔄 Abriendo ventana de IDE con nuevo entorno: {workspace}",
     "start_failed": "❌ Error al iniciar: {error}",
-    "started": "✅ ¡IDE iniciado con nuevo entorno de trabajo!",
+    "started": "✅ ¡IDE iniciado con nuevo entorno de trabajo: {workspace}!",
     "trusted": "🔓 Entorno marcado como confiable automáticamente.",
     "cdp_warning": "\n⚠️ La conexión CDP puede que no esté lista. Espera unos segundos e inténtalo de nuevo.",
     "select_prompt": "Por favor selecciona el entorno de trabajo al que quieres cambiar:",
@@ -340,7 +340,7 @@
     "changelog": "📝 <b>Changelog:</b> <i>{message}</i>\n\n",
     "update_note": "<i>💡 Nota: Se soporta Antigravity 2.0 (Standalone), pero se recomienda Antigravity IDE.</i>\n\n",
     "updating": "Actualizando...",
-    "auto_updating": "🔄 <b>[Actualización automática]</b> Actualización del desarrollador detectada (v{version} - {commit}).\\nFusionando cambios y actualizando...",
+    "auto_updating": "🔄 <b>[Actualización automática]</b> Actualización del desarrollador detectada (v{version} - {commit}).\nFusionando cambios y actualizando...",
     "auto_update_failed": "❌ <b>[Actualización automática]</b> Error al actualizar: {error}"
   },
   "error": {
