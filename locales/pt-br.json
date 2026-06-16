@@ -112,7 +112,7 @@
   "workspace": {
     "switching": "🔄 Abrindo nova janela do IDE para workspace: {workspace}",
     "start_failed": "❌ Falha ao iniciar: {error}",
-    "started": "✅ IDE iniciado com novo workspace!",
+    "started": "✅ IDE iniciado com novo workspace: {workspace}",
     "trusted": "🔓 Workspace marcado automaticamente como confiável.",
     "cdp_warning": "\n⚠️ Conexão CDP pode ainda não estar pronta. Aguarde alguns segundos e tente novamente.",
     "select_prompt": "Por favor, selecione o workspace para o qual deseja alternar:",
@@ -340,7 +340,7 @@
     "changelog": "📝 <b>Changelog:</b> <i>{message}</i>\n\n",
     "update_note": "<i>💡 Nota: IDE é recomendado.</i>\n\n",
     "updating": "Atualizando...",
-    "auto_updating": "🔄 <b>[Auto-Update]</b> Nova versão do dev ({commit}).\\nBaixando...",
+    "auto_updating": "🔄 <b>[Auto-Update]</b> Nova versão do dev ({commit}).\nBaixando...",
     "auto_update_failed": "❌ <b>[Auto-Update]</b> Falhou: {error}"
   },
   "error": {
