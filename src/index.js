@@ -789,7 +789,23 @@ bot.command('ask', (ctx) => {
 
 
 bot.command('cmd', async (ctx) => {
-    ctx.reply('⚠️ O comando /cmd foi desativado por motivos de segurança.');
+    const cmdStr = ctx.message.text.split(' ').slice(1).join(' ');
+    if (!cmdStr) {
+        return ctx.reply(t('cmd.empty'));
+    }
+    
+    ctx.reply(t('cmd.running', { cmdStr }), { parse_mode: 'MarkdownV2' });
+    
+    exec(cmdStr, { timeout: 60000, maxBuffer: 1024 * 1024 * 5 }, async (error, stdout, stderr) => {
+        let output = "";
+        if (stdout) output += `[STDOUT]\n${stdout}\n`;
+        if (stderr) output += `[STDERR]\n${stderr}\n`;
+        if (error) output += `[ERROR]\n${error.message}\n`;
+        
+        if (!output) output = t('cmd.no_output');
+        
+        await sendLongMessage(ctx, output, t('cmd.output_title'));
+    });
 });
 
 bot.command('stop', async (ctx) => {
@@ -2460,7 +2476,30 @@ bot.command('version', async (ctx) => {
 });
 
 bot.command('update', async (ctx) => {
-    ctx.reply('⚠️ O sistema de atualização automática foi desativado por motivos de segurança.');
+    ctx.reply(t('update.checking'));
+    try {
+        const result = await updater.checkForUpdates();
+        if (!result.available) {
+            ctx.reply(
+                t('update.up_to_date', { version: result.localVersion, commit: result.localCommit }),
+                { parse_mode: 'HTML' }
+            );
+            return;
+        }
+        await ctx.reply(
+            t('update.available') +
+            t('update.current_version', { version: result.localVersion, commit: result.localCommit }) +
+            t('update.new_version_info', { version: result.remoteVersion, commit: result.remoteCommit }) +
+            (result.remoteCommitMessage ? t('update.changelog', { message: result.remoteCommitMessage }) : `\n`) +
+            t('update.update_note') +
+            t('update.updating'),
+            { parse_mode: 'HTML' }
+        );
+        const updateResult = await updater.performUpdate();
+        await ctx.reply(`ℹ️ ${updateResult.message}`);
+    } catch(e) {
+        ctx.reply(t('update.error', { error: e.message }));
+    }
 });
 
 // ===== TURBO / COUNCIL MODE =====
