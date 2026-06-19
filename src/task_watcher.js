@@ -182,11 +182,7 @@ class TaskWatcher {
                 }
             }
 
-            // If there's a user input in this batch, it's a normal request-response — skip
-            if (hasUserInput) {
-                console.log(`[TaskWatcher] Skipping — batch contains USER_INPUT (normal conversation)`);
-                return;
-            }
+            // (Removed USER_INPUT check to allow forwarding PC interactions to Telegram)
 
             if (modelResponses.length > 0) {
                 // Use the LAST model response (most complete)
