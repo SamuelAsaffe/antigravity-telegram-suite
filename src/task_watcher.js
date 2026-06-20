@@ -27,6 +27,12 @@ class TaskWatcher {
         this.debounceTimer = null;
         this.DEBOUNCE_MS = 5000; // Wait 5s of silence before reading new content
         this.enabled = true;
+        
+        // Start polling for the most recent conversation periodically
+        // This ensures the bot detects if the user switches chats on the PC
+        this.pollingTimer = setInterval(() => this._pollMostRecentConversation(), 5000);
+        // Do an immediate initial poll
+        this._pollMostRecentConversation();
     }
 
     /**
@@ -247,6 +253,18 @@ class TaskWatcher {
     }
 
     /**
+     * Poll to see if there is a newer conversation we should be watching.
+     */
+    _pollMostRecentConversation() {
+        if (!this.enabled || this.isAgentBusy) return;
+        const recentId = this._findMostRecentConversation();
+        if (recentId && recentId !== this.activeConversationId) {
+            console.log(`[TaskWatcher] Auto-discovered new active conversation: ${recentId.substring(0, 8)}`);
+            this.setActiveConversation(recentId);
+        }
+    }
+
+    /**
      * Stop all watchers and clean up.
      */
     stop() {
@@ -257,6 +275,7 @@ class TaskWatcher {
         }
         this.watchers.clear();
         clearTimeout(this.debounceTimer);
+        clearInterval(this.pollingTimer);
         this.activeConversationId = null;
         console.log('[TaskWatcher] All watchers stopped.');
     }
